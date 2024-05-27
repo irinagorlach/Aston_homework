@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class MainClass {
     public static void main(String[] args) {
+
         printThreeWords();
         checkSumSign();
         printColor();
@@ -45,9 +46,9 @@ public class MainClass {
         int value = 101;
         if (value <= 0) {
             System.out.println("Красный");
-        } else if (value > 0 && value <= 100) {
+        } else if (value <= 100) {
             System.out.println("Желтый");
-        } else if (value > 100) {
+        } else {
             System.out.println("Зеленый");
         }
     }
@@ -66,11 +67,7 @@ public class MainClass {
     static boolean amountWithin(int a, int b) {
         System.out.println("\nЗадание 5.");
         int sum = a + b;
-        if (sum >= 10 && sum <= 20) {
-            return true;
-        } else {
-            return false;
-        }
+        return sum >= 10 && sum <= 20;
     }
 
     static void positiveOrNegative(int a) {
@@ -84,13 +81,7 @@ public class MainClass {
 
     static boolean positiveOrNegative1(int a) {
         System.out.println("\nЗадание 7.");
-        if (a < 0) {
-            return true;
-        } else if (a == 0) {
-            return false;
-        } else {
-            return false;
-        }
+        return a < 0;
     }
 
     static void stringPrintNumberTimes(String text, int count) {
@@ -101,13 +92,7 @@ public class MainClass {
 
     static boolean leapYearOrNot(int year) {
         System.out.println("\nЗадание 9.");
-        if (((year % 4) == 0) && !((year % 100) == 0)) {
-            return true;
-        } else if ((year % 400) == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 
     static void arrayReplacement() {
