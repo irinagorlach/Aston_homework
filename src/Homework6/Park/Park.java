@@ -44,4 +44,5 @@ public class Park {
             System.out.println("Стоимость аттракциона: " + attraction.attractionPrice);
         }
     }
+
 }

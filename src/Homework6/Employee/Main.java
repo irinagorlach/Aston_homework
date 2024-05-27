@@ -10,6 +10,7 @@ public class Main {
         persArray[3] = new Employee("Качан Степан", "Геолог", "kachan@mailbox.com", "892793272", 55000, 45);
         persArray[4] = new Employee("Клечанова Елизавета", "Инженер-проектировщик", "klelizan@mailbox.com", "892322332", 60000, 58);
 
+
         persArray[3].printObjectInformation();
     }
 
