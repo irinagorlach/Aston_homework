@@ -1,5 +1,6 @@
 package Homework6.Employee;
 
+
 public class Employee {
     String fullName;
     String position;
@@ -25,7 +26,6 @@ public class Employee {
         System.out.println("Зарплата: " + salary);
         System.out.println("Возраст: " + age);
     }
-
 }
 
 

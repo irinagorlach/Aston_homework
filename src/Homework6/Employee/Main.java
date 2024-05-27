@@ -12,4 +12,5 @@ public class Main {
 
         persArray[3].printObjectInformation();
     }
+
 }

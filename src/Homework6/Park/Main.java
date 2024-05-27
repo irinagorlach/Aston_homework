@@ -1,5 +1,6 @@
 package Homework6.Park;
 
+
 public class Main {
     public static void main(String[] args) {
         Park park = new Park(5);
