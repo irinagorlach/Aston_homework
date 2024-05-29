@@ -1,8 +1,5 @@
 package Homework6.Park;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Park {
 
@@ -18,27 +15,26 @@ public class Park {
         }
     }
 
-    private List<Attraction> attractions;
-    private int maxNumberOfAttractions;
+    private Attraction[] attractions;
+    private int numberOfAttractions;
 
     public Park(int maxNumberOfAttractions) {
-        this.attractions = new ArrayList<>();
-        this.maxNumberOfAttractions = maxNumberOfAttractions;
+        attractions = new Attraction[maxNumberOfAttractions];
+        int numberOfAttractions = 0;
     }
 
     public void addAttraction(String attractionName, String attractionWorkingHours, int attractionPrice) {
-        if (attractions.size() < maxNumberOfAttractions) {
-            Attraction attraction = new Attraction(attractionName, attractionWorkingHours, attractionPrice);
-            attractions.add(attraction);
+        if (numberOfAttractions < attractions.length) {
+            attractions[numberOfAttractions++] = new Attraction(attractionName, attractionWorkingHours, attractionPrice);
         } else {
             System.out.println("Невозможно выполнить добавление аттракциона. В парке нет места.");
         }
     }
 
     public void printAttractionsInfo() {
-        for (int i = 0; i < attractions.size(); i++) {
+        for (int i = 0; i < numberOfAttractions; i++) {
             System.out.println("--------------------");
-            Attraction attraction = attractions.get(i);
+            Attraction attraction = attractions[i];
             System.out.println("Название аттракциона: " + attraction.attractionName);
             System.out.println("Время работы аттракциона: " + attraction.attractionWorkingHours);
             System.out.println("Стоимость аттракциона: " + attraction.attractionPrice);

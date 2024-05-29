@@ -12,7 +12,6 @@ public class Main {
         park.addAttraction("Тайфун", "10:00 - 22:00", 20);
 
         park.printAttractionsInfo();
-
     }
 
 }

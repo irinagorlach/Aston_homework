@@ -19,6 +19,7 @@ public class Employee {
     }
 
     public void printObjectInformation() {
+        System.out.println("--------------------");
         System.out.println("ФИО: " + fullName);
         System.out.println("Должность: " + position);
         System.out.println("Email: " + email);
