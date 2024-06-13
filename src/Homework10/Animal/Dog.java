@@ -31,5 +31,4 @@ class Dog extends Animal {
     public static int getCountDog() {
         return countDog;
     }
-
 }
