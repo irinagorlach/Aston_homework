@@ -3,7 +3,6 @@ package Homework10.Animal;
 public class Main {
     public static void main(String[] args) {
 
-        Animal animal = new Animal("Лев");
         Dog dog = new Dog("пес Дружок");
         Cat cat1 = new Cat("кот Тигрик");
 
@@ -30,5 +29,4 @@ public class Main {
         System.out.println("Всего собак: " + Dog.getCountDog());
         System.out.println("Всего котов: " + Cat.getCountCat());
     }
-
 }
