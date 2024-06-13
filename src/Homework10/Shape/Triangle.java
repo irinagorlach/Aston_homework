@@ -37,5 +37,4 @@ class Triangle implements Shape {
     public Color getBorderColor() {
         return borderColor;
     }
-
 }

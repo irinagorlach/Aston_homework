@@ -18,7 +18,6 @@ interface Shape {
         System.out.println("Цвет границы: " + getBorderColor());
         System.out.println("------------------------");
     }
-
 }
 
 

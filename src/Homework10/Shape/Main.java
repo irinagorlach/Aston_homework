@@ -12,5 +12,4 @@ public class Main {
         rectangle.printShapeInfo();
         triangle.printShapeInfo();
     }
-
 }

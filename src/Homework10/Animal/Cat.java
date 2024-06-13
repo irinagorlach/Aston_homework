@@ -43,5 +43,4 @@ class Cat extends Animal {
     public static int getCountCat() {
         return countCat;
     }
-
 }
