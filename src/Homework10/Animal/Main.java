@@ -29,4 +29,5 @@ public class Main {
         System.out.println("Всего собак: " + Dog.getCountDog());
         System.out.println("Всего котов: " + Cat.getCountCat());
     }
+
 }

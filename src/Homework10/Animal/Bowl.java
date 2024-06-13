@@ -23,4 +23,5 @@ public class Bowl {
             amountFood -= amount;
         }
     }
+
 }
