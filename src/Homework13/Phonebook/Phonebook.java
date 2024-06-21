@@ -1,25 +1,21 @@
 package Homework13.Phonebook;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Phonebook {
-    private Map<String, List<String>> phonebook = new HashMap<>();
-    private List<String> phoneNumberList;
+    private Map<String, Set<String>> phonebook = new HashMap<>();
 
     public void add(String surname, String phoneNumber) {
-        if (phonebook.containsKey(surname)) {
-            phoneNumberList = phonebook.get(surname);
-        } else {
-            phoneNumberList = new ArrayList<>();
-        }
-        phoneNumberList.add(phoneNumber);
-        phonebook.put(surname, phoneNumberList);
+        Set<String> phoneNumberSet = phonebook.getOrDefault(surname, new HashSet<>());
+        ;
+        phoneNumberSet.add(phoneNumber);
+        phonebook.put(surname, phoneNumberSet);
     }
 
-    public List<String> get(String surname) {
-        return phonebook.get(surname);
+    public Set<String> get(String surname) {
+        return phonebook.getOrDefault(surname, new HashSet<>());
     }
 }
