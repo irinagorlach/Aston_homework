@@ -14,7 +14,7 @@ public class MainPage {
     private static WebDriver driver;
 
     @BeforeAll
-    public static void setup() throws InterruptedException {
+    public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -30,7 +30,7 @@ public class MainPage {
 
     @Test
     @Order(1)
-    public void testBlockTitle() throws InterruptedException {
+    public void testBlockTitle() {
         WebElement blockTitle = driver.findElement(By.xpath("//h2[contains(text(), 'Онлайн пополнение ')]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", blockTitle);
         Assert.assertEquals(blockTitle.getText(), "Онлайн пополнение\n" + "без комиссии", "Название блока не соответствует ожидаемому");
