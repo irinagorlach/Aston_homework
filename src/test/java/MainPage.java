@@ -272,7 +272,7 @@ public class MainPage {
         new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
 
         WebElement mastercardIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']"));
         boolean mastercardIconPresent = mastercardIcon.isDisplayed();
