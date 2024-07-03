@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MainPage {
+public class MTSPage {
     private static WebDriver driver;
 
     @BeforeAll
