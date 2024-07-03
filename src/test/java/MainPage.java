@@ -20,7 +20,9 @@ public class MainPage {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.mts.by/");
+
         WebElement buttonCookieAgree = driver.findElement(By.id("cookie-agree"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(By.id("cookie-agree")));
         buttonCookieAgree.click();
     }
 
