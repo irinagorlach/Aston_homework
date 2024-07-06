@@ -6,13 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
 public class Tests {
     private static MainPage mainPage;
+    private static WaitCreate waitCreate;
     private static WebDriver driver;
     private static WebDriverWait webDriverWait;
 
@@ -32,11 +32,12 @@ public class Tests {
         driver.get("https://www.mts.by/");
 
         mainPage = new MainPage(driver);
+        waitCreate = new WaitCreate(driver, 5);
 
         webDriverWait = new WebDriverWait(driver, 5);
 
         WebElement buttonCookieAgree = driver.findElement(By.id("cookie-agree"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.id("cookie-agree")));
+        waitCreate.waitForElementToBeClickable(By.id("cookie-agree"));
         buttonCookieAgree.click();
     }
 
@@ -50,7 +51,7 @@ public class Tests {
         mainPage.clickInscriptionsField();
 
         WebElement selectList = driver.findElement(By.className("select__list"));
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("select__list")));
+        waitCreate.waitForPresenceOfElement(By.className("select__list"));
         Assert.assertEquals(selectList.getText(), "Услуги связи\n" + "Домашний интернет\n" + "Рассрочка\n" + "Задолженность");
     }
 
@@ -67,13 +68,13 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
         WebElement textPrice = driver.findElement(By.xpath("//span[contains(text(), '30.00 BYN')]"));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
         Assert.assertEquals(textPrice.getText(), "30.00 BYN");
     }
 
@@ -90,10 +91,10 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//button[@type='submit']"), "Оплатить 30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//button[@type='submit']"), "Оплатить 30.00 BYN");
         WebElement textPriceButton = driver.findElement(By.xpath("//button[@type='submit']"));
         Assert.assertEquals(textPriceButton.getText(), "Оплатить 30.00 BYN");
     }
@@ -111,13 +112,11 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
         WebElement textPhoneNumber = driver.findElement(By.className("pay-description__text"));
-
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), 'Номер:375297777777')]"), "Оплата: Услуги связи Номер:375297777777"));
         Assert.assertEquals(textPhoneNumber.getText(), "Оплата: Услуги связи Номер:375297777777");
     }
 
@@ -134,13 +133,11 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
         WebElement textCardNumber = driver.findElement(By.xpath("//*[contains(text(), 'Номер карты')]"));
-
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//*[contains(text(), 'Номер карты')]"), "Номер карты"));
         Assert.assertEquals(textCardNumber.getText(), "Номер карты");
     }
 
@@ -157,14 +154,12 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
-        WebElement textCardNumber = driver.findElement(By.xpath("//*[contains(text(), 'Срок действия')]"));
-
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//*[contains(text(), 'Срок действия')]"), "Срок действия"));
-        Assert.assertEquals(textCardNumber.getText(), "Срок действия");
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
+        WebElement textСardValidity = driver.findElement(By.xpath("//*[contains(text(), 'Срок действия')]"));
+        Assert.assertEquals(textСardValidity.getText(), "Срок действия");
     }
 
     @Test
@@ -180,14 +175,12 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
-        WebElement textCardNumber = driver.findElement(By.xpath("//*[contains(text(), 'CVC')]"));
-
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//*[contains(text(), 'CVC')]"), "CVC"));
-        Assert.assertEquals(textCardNumber.getText(), "CVC");
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
+        WebElement textСardCVC = driver.findElement(By.xpath("//*[contains(text(), 'CVC')]"));
+        Assert.assertEquals(textСardCVC.getText(), "CVC");
     }
 
     @Test
@@ -203,14 +196,12 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
-        WebElement textCardNumber = driver.findElement(By.xpath("//*[contains(text(), 'Имя держателя (как на карте)')]"));
-
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//*[contains(text(), 'Имя держателя (как на карте)')]"), "Имя держателя (как на карте)"));
-        Assert.assertEquals(textCardNumber.getText(), "Имя держателя (как на карте)");
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
+        WebElement textСardNameHolder = driver.findElement(By.xpath("//*[contains(text(), 'Имя держателя (как на карте)')]"));
+        Assert.assertEquals(textСardNameHolder.getText(), "Имя держателя (как на карте)");
     }
 
     @Test
@@ -226,13 +217,13 @@ public class Tests {
 
         mainPage.clickContinueButton();
 
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        waitCreate.waitForPresenceOfElement(By.className("bepaid-iframe"));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
-        webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
+        waitCreate.waitForTextToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN");
 
         for (String[] icon : iconsLocator) {
-            webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(icon[0])));
+            waitCreate.waitForVisibilityOfElementLocated(By.xpath(icon[0]));
             WebElement iconElement = driver.findElement(By.xpath(icon[0]));
             boolean iconPresent = iconElement.isDisplayed();
             Assert.assertTrue(iconPresent);
