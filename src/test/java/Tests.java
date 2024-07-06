@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
@@ -14,7 +13,6 @@ public class Tests {
     private static MainPage mainPage;
     private static WaitCreate waitCreate;
     private static WebDriver driver;
-    private static WebDriverWait webDriverWait;
 
     private static String[][] iconsLocator = {
             {"//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']", "Mastercard"},
@@ -33,8 +31,6 @@ public class Tests {
 
         mainPage = new MainPage(driver);
         waitCreate = new WaitCreate(driver, 5);
-
-        webDriverWait = new WebDriverWait(driver, 5);
 
         WebElement buttonCookieAgree = driver.findElement(By.id("cookie-agree"));
         waitCreate.waitForElementToBeClickable(By.id("cookie-agree"));
