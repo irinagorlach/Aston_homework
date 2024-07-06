@@ -12,8 +12,17 @@ import org.testng.Assert;
 
 
 public class Tests {
+    private static MainPage mainPage;
     private static WebDriver driver;
     private static WebDriverWait webDriverWait;
+
+    private static String[][] iconsLocator = {
+            {"//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']", "Mastercard"},
+            {"//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/visa-system.svg']", "Visa"},
+            {"//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/belkart-system.svg']", "Belkart"},
+            {"//div[contains(@class, 'cards-brands_random')]/img[@src='assets/images/payment-icons/card-types/mir-system-ru.svg']", "Mir"},
+            {"//div[contains(@class, 'cards-brands_random')]/img[@src='assets/images/payment-icons/card-types/maestro-system.svg']", "Maestro"}
+    };
 
     @BeforeEach
     public void setup() {
@@ -21,6 +30,8 @@ public class Tests {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.mts.by/");
+
+        mainPage = new MainPage(driver);
 
         webDriverWait = new WebDriverWait(driver, 5);
 
@@ -36,8 +47,7 @@ public class Tests {
 
     @Test
     public void testCheckInscriptionsInTheBlock() {
-        WebElement inscriptions = driver.findElement(By.className("select__wrapper"));
-        inscriptions.click();
+        mainPage.clickInscriptionsField();
 
         WebElement selectList = driver.findElement(By.className("select__list"));
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("select__list")));
@@ -46,21 +56,16 @@ public class Tests {
 
     @Test
     public void testCheckDisplayPrice() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -74,21 +79,16 @@ public class Tests {
 
     @Test
     public void testCheckDisplayPriceOnButton() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -100,21 +100,16 @@ public class Tests {
 
     @Test
     public void testCheckDisplayPhone() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -128,21 +123,16 @@ public class Tests {
 
     @Test
     public void testCheckСardNumber() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -156,21 +146,16 @@ public class Tests {
 
     @Test
     public void testCheckСardValidity() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -184,21 +169,16 @@ public class Tests {
 
     @Test
     public void testCheckСardCVC() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -212,21 +192,16 @@ public class Tests {
 
     @Test
     public void testCheckСardNameHolder() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
@@ -240,46 +215,27 @@ public class Tests {
 
     @Test
     public void testPaymentSystemLogos() {
-        WebElement phoneInputField = driver.findElement(By.id("connection-phone"));
-        phoneInputField.click();
-        phoneInputField.sendKeys("297777777");
+        mainPage.clickPhoneInputField();
+        mainPage.inputPhone();
 
-        WebElement sumInputField = driver.findElement(By.id("connection-sum"));
-        sumInputField.click();
-        sumInputField.sendKeys("30");
+        mainPage.clickSumInputField();
+        mainPage.inputSum();
 
-        WebElement emailField = driver.findElement(By.id("connection-email"));
-        emailField.click();
-        emailField.sendKeys("345nameName@gmail.com");
+        mainPage.clickEmailField();
+        mainPage.inputEmail();
 
-        WebElement continueButton = driver.findElement(By.cssSelector("#pay-connection .button"));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#pay-connection .button")));
-        continueButton.click();
+        mainPage.clickContinueButton();
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
         driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
 
         webDriverWait.until(ExpectedConditions.textToBe(By.xpath("//span[contains(text(), '30.00 BYN')]"), "30.00 BYN"));
 
-        WebElement mastercardIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']"));
-        boolean mastercardIconPresent = mastercardIcon.isDisplayed();
-        Assert.assertTrue(mastercardIconPresent);
-
-        WebElement visaIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/visa-system.svg']"));
-        boolean visaIconPresent = visaIcon.isDisplayed();
-        Assert.assertTrue(visaIconPresent);
-
-        WebElement belkartIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/belkart-system.svg']"));
-        boolean belkartIconPresent = belkartIcon.isDisplayed();
-        Assert.assertTrue(belkartIconPresent);
-
-        WebElement mirIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands__container')]/img[@src='assets/images/payment-icons/card-types/belkart-system.svg']"));
-        boolean mirIconPresent = mirIcon.isDisplayed();
-        Assert.assertTrue(mirIconPresent);
-
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'cards-brands_random')]/img[@src='assets/images/payment-icons/card-types/maestro-system.svg']")));
-        WebElement maestroIcon = driver.findElement(By.xpath("//div[contains(@class, 'cards-brands_random')]/img[@src='assets/images/payment-icons/card-types/maestro-system.svg']"));
-        boolean maestroIconPresent = maestroIcon.isDisplayed();
-        Assert.assertTrue(maestroIconPresent);
+        for (String[] icon : iconsLocator) {
+            webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(icon[0])));
+            WebElement iconElement = driver.findElement(By.xpath(icon[0]));
+            boolean iconPresent = iconElement.isDisplayed();
+            Assert.assertTrue(iconPresent);
+        }
     }
 }
