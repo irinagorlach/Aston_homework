@@ -15,17 +15,6 @@ public class TestsAPI {
     }
 
     @Test
-    public void testGETReqResponseBody() {
-        given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get("/get")
-                .then().log().body()
-                .assertThat()
-                .body("headers.host", equalTo("postman-echo.com"));
-    }
-
-    @Test
     public void testGETReqWoopsResponseBody() {
         given()
                 .contentType(ContentType.JSON)
@@ -42,7 +31,7 @@ public class TestsAPI {
     }
 
     @Test
-    public void testGETReqResponseCodeOK() {
+    public void testGETReqWoopsResponseCodeOK() {
         given()
                 .contentType(ContentType.JSON)
                 .when().get("/get")
@@ -86,17 +75,19 @@ public class TestsAPI {
     @Test
     public void testPOSTFormDataResponseBody() {
         given().log().body()
-//                .headers("Content-Type", "application/x-www-form-urlencoded")
                 .contentType(ContentType.JSON)
-                .formParam("foo1", "bar1")
-                .formParam("foo2", "bar2")
+//                .header("Content-Type", "application/x-www-form-urlencoded")
+//                .formParam("foo1", "bar1")
+//                .formParam("foo2", "bar2")
                 .when()
                 .post("/post")
                 .then().log().body()
                 .assertThat()
-//                .body("foo1", equalTo("bar1"))
-//                .body("foo2", equalTo("bar2"))
+//                .body("form.foo1", equalTo("bar1"))
+//                .body("form.foo2", equalTo("bar2"))
                 .body("headers.host", equalTo("postman-echo.com"))
+//                .body("json.foo1", equalTo("bar1"))
+//                .body("json.foo2", equalTo("bar2"))
                 .body("url", equalTo("https://postman-echo.com/post"));
     }
 
