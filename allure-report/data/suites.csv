@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 08 22:08:12 MSK 2024","Mon Jul 08 22:08:18 MSK 2024","6469","","Tests","","Tests","testCheckInscriptionsInTheBlock","Проверить надписи в незаполненных полях каждого варианта оплаты услуг: услуги связи, домашний интернет, рассрочка, задолженность",""
